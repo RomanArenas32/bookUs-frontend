@@ -1,0 +1,86 @@
+
+/*Header*/
+.header {
+    background-image: url(../assets/img/img3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
+    background-position: center center; /* Centra la imagen horizontal y verticalmente */
+    width: 100vw;
+    height: 30rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
+}
+h1{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    color: rgb(211, 9, 9);
+    font-weight: bold;
+    font-size: 4rem;
+}
+/*Header end*/
+
+/*Footer*/
+.footer{
+    padding: 10px 0; /* Espaciado interno del footer */
+    height: 5rem;
+    background-color: #532828;
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 4rem 7rem;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+
+}
+
+
+/*Footer end*/
+
+/*Presentacion comienzo*/
+.presentacion {
+    width: 500px;
+    height: 254px;
+    border-radius: 4px;
+    background: #212121;
+    display: flex;
+    gap: 5px;
+    padding: .4em;
+  }
+  
+  .presentacion p {
+    height: 100%;
+    flex: 1;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all .5s;
+    background: #212121;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .presentacion p:hover {
+    flex: 4;
+  }
+  
+  .presentacion p span {
+    min-width: 14em;
+    padding: .5em;
+    text-align: center;
+    transform: rotate(-90deg);
+    transition: all .5s;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: .1em;
+  }
+  
+  .presentacion p:hover span {
+    transform: rotate(0);
+  }
+/*Presentacion final*/
