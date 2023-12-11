@@ -31,12 +31,15 @@ h1{
     text-transform: uppercase;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     padding: 4rem 7rem;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-
+    gap: 1rem;
 }
 
+.footer p {
+  font-size: 10px;
+}
 
 /*Footer end*/
 
