@@ -1,10 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import { Footer, Header } from '../components';
 import './auth.css';
+import { Button } from '../utils';
 
 export const Registro = () => {
+
+  const navigate = useNavigate();
+
   return (
     <>
     <Header/>
+    <div onClick={()=> navigate('../')}>
+      <Button titulo={"volver al inicio"}/>
+    </div>
      <div className='login-container'>
       <div className="card">
         <div className="card2">
@@ -41,7 +49,7 @@ export const Registro = () => {
             
             <div className="btn">
               <button className="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Registrate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-              <button className="button2">Logeate</button>
+              <button className="button2" onClick={()=> navigate('../login')}>Logeate</button>
             </div>
           </form>
         </div>

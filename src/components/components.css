@@ -106,7 +106,9 @@ h1 {
 /*comienzo navegacion*/
 .navegacion {
   padding: 3rem;
-  text-align: center;
+  width: 100%;
 }
-
+.iniciarSesion{
+  width: 200px;
+}
 /*final navegacion*/

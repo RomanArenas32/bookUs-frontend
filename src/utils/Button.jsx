@@ -1,9 +1,9 @@
 import './utils.css';
 
-export const Button = () => {
+export const Button = ({titulo}) => {
   return (
     <button>
-      Iniciar Sesion
+      {titulo}
       <div className="star-1">
         <svg xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53" style={{ shapeRendering: 'geometricPrecision', textRendering: 'geometricPrecision', imageRendering: 'optimizeQuality', fillRule: 'evenodd', clipRule: 'evenodd' }} version="1.1" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg">
           <defs></defs>
