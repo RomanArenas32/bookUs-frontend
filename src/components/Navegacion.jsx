@@ -1,6 +1,10 @@
+import { Button } from "../utils";
+import './components.css';
 
 export const Navegacion = () => {
   return (
-    <div>LOGITO A LA DERECHA</div>
+    <nav className="navegacion">
+      <Button />
+    </nav>
   )
 }
