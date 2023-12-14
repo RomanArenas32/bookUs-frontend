@@ -36,7 +36,7 @@ export const ListaLibros = () => {
         {
           libros.map(el => (
             <div className="parent" key={el._id}>
-              <div className="card">
+              <div className="cartaCurso">
                 <div className="logo">
                   <span className="circle circle1"></span>
                   <span className="circle circle2"></span>
