@@ -24,8 +24,6 @@ export const Login = () => {
     });
   }
 
-
-
   const onSubmit = async (e) => {
     e.preventDefault();
     if ([formData.correo, formData.password].includes("")) {
@@ -34,16 +32,20 @@ export const Login = () => {
     }
     try {
       const { data } = await clienteAxios.post(`/auth/login`, formData);
-      console.log(data)
       setAlerta({ mensaje: "Usuario autenticado correctamente", error: false })
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('nombre', data.usuario.nombre);
+      localStorage.setItem('rol', data.usuario.rol);
     } catch (error) {
       console.log(error)
       setAlerta({ mensaje: error.response.data.msg, error: true })
       return;
     }
-    /*setTimeout(() => {
+    /*
+    setTimeout(() => {
       navigate("../libros")
-    }, 6000);*/
+    }, 4000);
+    */
   }
 
 

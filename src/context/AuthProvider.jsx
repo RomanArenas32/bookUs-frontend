@@ -3,32 +3,25 @@ import { createContext, useEffect, useState } from "react";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState({});
+  //comprueba todo el tiempo si el usuario esta autenticado
+  const [auth, setAuth] = useState("");
+  const [usuarioAuth, setUsuarioAuth] = useState({});
 
-  /* useEffect(()=>{
+  useEffect(()=>{
      const autenticarUsuario = async()=>{
        const token = localStorage.getItem('token');
-       //console.log(token)
        if(!token) return
- 
- 
-       const config = {
-         headers: {
-           "Content-Type": "application/json",
-           Authorization: `Bearer ${token}`
-         }
-       }
+
        try {
-         const {data} = await clienteAxios.get(`/users/perfil`, config);
-        // console.log(data)
-         setAuth(data.user)
+         setAuth("autenticated")
        } catch (error) {
          console.log(error.response.data.msg)
        }
      }
      autenticarUsuario();
    }, [])
- */
+ 
+   console.log(auth)
   /* const actualizarPerfil = async datos => {
      const { _id } = datos;
      const token = localStorage.getItem('token')
@@ -64,6 +57,8 @@ const AuthProvider = ({ children }) => {
       value={{
         auth,
         setAuth,
+        usuarioAuth,
+        setUsuarioAuth
       }}
     >
       {children}

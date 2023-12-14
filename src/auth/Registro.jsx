@@ -52,9 +52,9 @@ export const Registro = () => {
       setAlerta({ mensaje: error.response.data.msg, error: true })
       return;
     }
-    /*setTimeout(() => {
-      navigate("../libros")
-    }, 6000);*/
+    setTimeout(() => {
+      navigate("../login")
+    }, 3000);
   }
   const { mensaje } = alerta;
 
