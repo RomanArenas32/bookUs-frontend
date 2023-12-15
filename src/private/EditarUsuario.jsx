@@ -16,6 +16,8 @@ export const EditarUsuario = () => {
     const {usuarioAuth}= useAuth();
     const {correo, _id} = usuarioAuth;
    
+
+    
     const [formData, setFormData] = useState({
         nombre: '',
         apellido: '',

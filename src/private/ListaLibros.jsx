@@ -28,6 +28,8 @@ export const ListaLibros = () => {
     navigate('../')
   }
 
+  const {rol} = usuarioAuth;
+  console.log(rol)
   return (
     <>
       <Header />
@@ -41,6 +43,7 @@ export const ListaLibros = () => {
       <div onClick={cerrarSeccion} className='botonesVarios-boton'>
         <Button titulo={"salir de la sesion"} />
       </div>
+
    </div>
      
 
