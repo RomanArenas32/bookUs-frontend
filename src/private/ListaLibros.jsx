@@ -21,7 +21,6 @@ export const ListaLibros = () => {
     obtenerLibros();
   }, [])
 
-  console.log(usuarioAuth)
 
   const cerrarSeccion = () => {
     localStorage.removeItem("token");
@@ -29,7 +28,6 @@ export const ListaLibros = () => {
   }
 
   const { rol } = usuarioAuth;
-  console.log(rol)
   return (
     <>
       <Header />
