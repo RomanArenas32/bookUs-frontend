@@ -9,13 +9,13 @@ export const ListaLibros = () => {
 
 
   const [libros, setLibros] = useState([]);
-  const { usuarioAuth, setUsuarioAuth } = useAuth();
+  const { usuarioAuth } = useAuth();
   const navigate = useNavigate();
 
   //LISTA LOS LIBROS
   useEffect(() => {
     const obtenerLibros = async () => {
-      const { data } = await clienteAxios('/libros')
+      const { data } = await clienteAxios.get('/libros')
       setLibros(data.books)
     }
     obtenerLibros();
@@ -28,8 +28,8 @@ export const ListaLibros = () => {
   }
 
 
-  const borrarLibro = async()=>{
-   console.log("borrando")
+  const borrarLibro = async () => {
+    console.log("borrando")
   }
 
   const { rol } = usuarioAuth;
@@ -46,7 +46,9 @@ export const ListaLibros = () => {
         <div onClick={cerrarSeccion} className='botonesVarios-boton'>
           <Button titulo={"salir de la sesion"} />
         </div>
-
+        {(rol === "ADMIN_ROLE") && <div onClick={() => navigate('../listarusuarios')} className='botonesVarios-boton'>
+          <Button titulo={"listar usuarios"} />
+        </div>}
       </div>
 
 
@@ -63,7 +65,7 @@ export const ListaLibros = () => {
               </p>
               <button>DESCARGAR</button>
               {(rol === "ADMIN_ROLE") && <button className='botonBorrar' onClick={borrarLibro}>BORRAR</button>}
-              
+
             </div>
           ))
         }
