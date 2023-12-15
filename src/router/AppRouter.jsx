@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Login, Registro } from "../auth";
 import { Home } from "../public";
-import { EditarUsuario, ListaLibros } from "../private";
+import { AgregarLibro, EditarUsuario, ListaLibros } from "../private";
 
 export const AppRouter = () => {
     return (
@@ -14,6 +14,8 @@ export const AppRouter = () => {
             {/*private routes */}
             <Route path="/editusuario" element={<EditarUsuario />} />
             <Route path="/libros" element={<ListaLibros />} />
+            <Route path="/agregarlibro" element={<AgregarLibro />} />
+
         </Routes>
     )
 }

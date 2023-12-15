@@ -4,13 +4,15 @@ import './private.css';
 import clienteAxios from '../config/axios';
 import { Button } from '../utils';
 import { useAuth } from '../hooks';
+import { useNavigate } from 'react-router-dom';
 export const ListaLibros = () => {
 
 
   const [libros, setLibros] = useState([]);
-  const { auth, usuarioAuth } = useAuth();
+  const { usuarioAuth, setUsuarioAuth } = useAuth();
+  const navigate = useNavigate();
 
-
+//LISTA LOS LIBROS
   useEffect(() => {
     const obtenerLibros = async () => {
       const { data } = await clienteAxios('/libros')
@@ -19,26 +21,35 @@ export const ListaLibros = () => {
     obtenerLibros();
   }, [])
 
+  console.log(usuarioAuth)
+
+  const cerrarSeccion = ()=>{
+    localStorage.removeItem("token");
+    navigate('../')
+  }
+
   return (
     <>
       <Header />
-   
-      <div>
+   <div className="botonesVarios">
+    <div onClick={()=>navigate('../agregarlibro')} className='botonesVarios-boton'>
         <Button titulo={"agregar un libro"} />
       </div>
-      <div>
+      <div onClick={()=> navigate('../editusuario')} className='botonesVarios-boton'>
         <Button titulo={"actualizar usuario"} />
       </div>
-      <div>
+      <div onClick={cerrarSeccion} className='botonesVarios-boton'>
         <Button titulo={"salir de la sesion"} />
       </div>
+   </div>
+     
 
       <main className='cotenedor-libros'>
         {
           libros.map(el => (
             <div className="cursos" key={el._id}>
               <img src={el.urlFoto} alt="foto" />
-              <p className="heading">
+              <p className="cursos-heading">
                 {el.titulo}
               </p>
               <p>

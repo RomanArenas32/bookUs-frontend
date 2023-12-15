@@ -4,11 +4,9 @@ import './auth.css';
 import { Alerta, Button } from '../utils';
 import { useState } from 'react';
 import clienteAxios from '../config/axios';
-import { useAuth } from '../hooks/';
-
 export const Login = () => {
 
-  const { setUsuarioAuth, setAuth } = useAuth();
+  
   const [alerta, setAlerta] = useState({});
   const navigate = useNavigate();
   // Definir el estado inicial para los campos del formulario
@@ -27,7 +25,7 @@ export const Login = () => {
   }
 
 
-  
+  //EL LOGIN SOLAMENTE VA A ENVIAR EL TOKEN AL LOCAL STORAGE Y DE AHI EL CONTEXT CHEQUEARA QUE EL USUARIO ESTE LOGEADO TODO EL TIEMPO
   const onSubmit = async (e) => {
     e.preventDefault();
     if ([formData.correo, formData.password].includes("")) {
