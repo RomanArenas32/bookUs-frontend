@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Header } from '../components';
+import { Footer, Header } from '../components';
 import { useAuth } from '../hooks';
 import clienteAxios from '../config/axios';
+import './private.css';
+import { Alerta, Button } from '../utils';
 
 export const ListarUsuarios = () => {
   const [listaUsuarios, setListaUsuarios] = useState([]);
+  const [alerta, setAlerta] = useState({});
+
   const { usuarioAuth } = useAuth();
   const { rol } = usuarioAuth;
 
@@ -20,15 +24,44 @@ export const ListarUsuarios = () => {
 
     obtenerUsuarios();
   }, []);
+  const cerrarSeccion = () => {
+    localStorage.removeItem("token");
+    navigate('../')
+  }
+
+
+  const borrarUsuario = async () => {
+    console.log("borrando")
+  }
+
+
+  const { mensaje } = alerta;
 
   return (
     <>
       <Header />
+      <div className="botonesVarios">
+        <div onClick={() => navigate('../agregarlibro')} className='botonesVarios-boton'>
+          <Button titulo={"agregar un libro"} />
+        </div>
+        <div onClick={() => navigate('../editusuario')} className='botonesVarios-boton'>
+          <Button titulo={"actualizar mi usuario"} />
+        </div>
+        <div onClick={cerrarSeccion} className='botonesVarios-boton'>
+          <Button titulo={"salir de la sesion"} />
+        </div>
+      </div>
       {rol === "ADMIN_ROLE" && listaUsuarios.map((el) => (
         <div key={el._id}>
           <h3>{el.nombre}</h3>
+          <button className='botonBorrar' onClick={borrarUsuario}>BORRAR</button>
         </div>
       ))}
+      {
+        mensaje && <Alerta alerta={alerta} />
+      }
+
+      <Footer/>
     </>
   );
 };

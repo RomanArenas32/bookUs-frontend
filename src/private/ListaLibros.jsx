@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { Footer, Header } from '../components';
 import './private.css';
 import clienteAxios from '../config/axios';
-import { Button } from '../utils';
+import { Alerta, Button } from '../utils';
 import { useAuth } from '../hooks';
 import { useNavigate } from 'react-router-dom';
 export const ListaLibros = () => {
 
 
   const [libros, setLibros] = useState([]);
+  const [alerta, setAlerta] = useState({});
+
   const { usuarioAuth } = useAuth();
   const navigate = useNavigate();
 
@@ -33,6 +35,10 @@ export const ListaLibros = () => {
   }
 
   const { rol } = usuarioAuth;
+
+
+  const { mensaje } = alerta;
+
   return (
     <>
       <Header />
@@ -70,7 +76,9 @@ export const ListaLibros = () => {
           ))
         }
       </main>
-
+      {
+        mensaje && <Alerta alerta={alerta} />
+      }
       <Footer />
     </>
   )
