@@ -1,57 +1,65 @@
 import { createContext, useEffect, useState } from "react";
+import clienteAxios from "../config/axios";
 
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   //comprueba todo el tiempo si el usuario esta autenticado
-  const [auth, setAuth] = useState("");
+  const [auth, setAuth] = useState(false);
   const [usuarioAuth, setUsuarioAuth] = useState({});
 
-  useEffect(()=>{
-     const autenticarUsuario = async()=>{
-       const token = localStorage.getItem('token');
-       if(!token) return
+useEffect(() => {
+  const autenticarUsuario = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) return;
 
-       try {
-         setAuth("autenticated")
-       } catch (error) {
-         console.log(error.response.data.msg)
-       }
-     }
-     autenticarUsuario();
-   }, [])
- 
-   console.log(auth)
-  /* const actualizarPerfil = async datos => {
-     const { _id } = datos;
-     const token = localStorage.getItem('token')
- 
-     if (!token) {
-       setCargando(false);
-       return
-     }
-     const config = {
-       headers: {
-         "Content-Type": "application/json",
-         Authorization: `Bearer ${token}`
-       }
-     }
-     try {
-       const url = `/users/perfil/${_id}`;
-       const { data } = await clienteAxios.put(url, datos, config);
-       return {
-         msg: "Usuario actualizado con exito",
-         error: false
-       }
-     } catch (error) {
-       return {
-         msg: error.response.data.msg,
-         error: true
-       }
-     }
- 
-   }
- */
+    try {
+      // Configurar los headers con el token
+      const config = {
+        headers: {
+          "token": `${token}`
+        }
+      };
+     
+      // Realizar la solicitud con los headers configurados
+      const { data } = await clienteAxios.get('usuarios/perfil', config);
+      console.log(data);
+      setUsuarioAuth(data);
+      
+    } catch (error) {
+      console.log(error.response.data.msg);
+    }
+  };
+
+  autenticarUsuario();
+}, []);
+
+
+
+  /* useEffect(()=>{
+    const autenticarUsuario = async()=>{
+      const token = localStorage.getItem('token');
+      //console.log(token)
+      if(!token) return
+
+
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        }
+      }
+      try {
+        const {data} = await clienteAxios.get(`/users/perfil`, config);
+       // console.log(data)
+        setAuth(data.user)
+      } catch (error) {
+        console.log(error.response.data.msg)
+      }
+    }
+    autenticarUsuario();
+  }, [])
+*/
   return (
     <AuthContext.Provider
       value={{

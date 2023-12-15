@@ -4,9 +4,11 @@ import './auth.css';
 import { Alerta, Button } from '../utils';
 import { useState } from 'react';
 import clienteAxios from '../config/axios';
+import { useAuth } from '../hooks/';
 
 export const Login = () => {
 
+  const { setUsuarioAuth, setAuth } = useAuth();
   const [alerta, setAlerta] = useState({});
   const navigate = useNavigate();
   // Definir el estado inicial para los campos del formulario
@@ -24,6 +26,8 @@ export const Login = () => {
     });
   }
 
+
+  
   const onSubmit = async (e) => {
     e.preventDefault();
     if ([formData.correo, formData.password].includes("")) {
@@ -34,18 +38,17 @@ export const Login = () => {
       const { data } = await clienteAxios.post(`/auth/login`, formData);
       setAlerta({ mensaje: "Usuario autenticado correctamente", error: false })
       localStorage.setItem('token', data.token);
-      localStorage.setItem('nombre', data.usuario.nombre);
-      localStorage.setItem('rol', data.usuario.rol);
+
     } catch (error) {
       console.log(error)
       setAlerta({ mensaje: error.response.data.msg, error: true })
       return;
     }
-    /*
+    
     setTimeout(() => {
       navigate("../libros")
     }, 4000);
-    */
+    
   }
 
 

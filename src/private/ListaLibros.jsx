@@ -3,11 +3,12 @@ import { Footer, Header } from '../components';
 import './private.css';
 import clienteAxios from '../config/axios';
 import { Button } from '../utils';
+import { useAuth } from '../hooks';
 export const ListaLibros = () => {
 
 
   const [libros, setLibros] = useState([]);
-
+  const { auth, usuarioAuth } = useAuth();
 
 
   useEffect(() => {
@@ -18,10 +19,10 @@ export const ListaLibros = () => {
     obtenerLibros();
   }, [])
 
-  console.log(libros)
   return (
     <>
       <Header />
+   
       <div>
         <Button titulo={"agregar un libro"} />
       </div>
@@ -35,9 +36,9 @@ export const ListaLibros = () => {
       <main className='cotenedor-libros'>
         {
           libros.map(el => (
-            <div class="cursos" key={el._id}>
-            <img src={el.urlFoto} alt="foto" />
-              <p class="heading">
+            <div className="cursos" key={el._id}>
+              <img src={el.urlFoto} alt="foto" />
+              <p className="heading">
                 {el.titulo}
               </p>
               <p>
