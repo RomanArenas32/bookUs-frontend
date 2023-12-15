@@ -27,6 +27,11 @@ export const ListaLibros = () => {
     navigate('../')
   }
 
+
+  const borrarLibro = async()=>{
+   console.log("borrando")
+  }
+
   const { rol } = usuarioAuth;
   return (
     <>
@@ -56,9 +61,9 @@ export const ListaLibros = () => {
               <p>
                 {el.sinopsis}
               </p>
-              <p>
-                <a href={`${el.urlDescarga}`} target='_blank' className='descarga'>descargar</a>
-              </p>
+              <button>DESCARGAR</button>
+              {(rol === "ADMIN_ROLE") && <button className='botonBorrar' onClick={borrarLibro}>BORRAR</button>}
+              
             </div>
           ))
         }
