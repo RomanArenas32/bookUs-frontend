@@ -101,6 +101,11 @@
     color: white;
     font-weight: bold;
    }
+   .input-busqueda{
+    width: 100%;
+    text-align: center;
+    margin: 2rem 0;
+   }
 /*listaLibros final*/
 
 

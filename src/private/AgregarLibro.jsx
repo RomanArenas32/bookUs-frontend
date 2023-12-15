@@ -63,8 +63,8 @@ export const AgregarLibro = () => {
         <div onClick={() => navigate('../')}>
           <Button titulo={"volver al inicio"} />
         </div>
-        <div onClick={() => navigate('../agregarlibro')} className='botonesVarios-boton'>
-          <Button titulo={"agregar un libro"} />
+        <div onClick={() => navigate('../libros')} className='botonesVarios-boton'>
+          <Button titulo={"Lista de libros"} />
         </div>
         <div onClick={() => navigate('../editusuario')} className='botonesVarios-boton'>
           <Button titulo={"actualizar usuario"} />

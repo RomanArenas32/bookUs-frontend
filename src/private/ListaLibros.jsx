@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Footer, Header } from '../components';
 import './private.css';
 import clienteAxios from '../config/axios';
-import { Alerta, Button } from '../utils';
+import { Alerta, Busqueda, Button } from '../utils';
 import { useAuth } from '../hooks';
 import { useNavigate } from 'react-router-dom';
 export const ListaLibros = () => {
@@ -57,7 +57,10 @@ export const ListaLibros = () => {
         </div>}
       </div>
 
-
+      <div className='input-busqueda'>
+        <Busqueda titulo={"Buscar libro"} />
+      </div>
+      
       <main className='cotenedor-libros'>
         {
           libros.map(el => (

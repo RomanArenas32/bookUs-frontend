@@ -3,9 +3,11 @@ import { Footer, Header } from '../components';
 import { useAuth } from '../hooks';
 import clienteAxios from '../config/axios';
 import './private.css';
-import { Alerta, Button } from '../utils';
+import { Alerta, Busqueda, Button } from '../utils';
+import { useNavigate } from 'react-router-dom';
 
 export const ListarUsuarios = () => {
+  const navigate= useNavigate();
   const [listaUsuarios, setListaUsuarios] = useState([]);
   const [alerta, setAlerta] = useState({});
 
@@ -51,6 +53,11 @@ export const ListarUsuarios = () => {
           <Button titulo={"salir de la sesion"} />
         </div>
       </div>
+
+      <div className='input-busqueda'>
+        <Busqueda titulo={"Buscar usuario"} />
+      </div>
+
       {rol === "ADMIN_ROLE" && listaUsuarios.map((el) => (
         <div key={el._id}>
           <h3>{el.nombre}</h3>
@@ -61,7 +68,7 @@ export const ListarUsuarios = () => {
         mensaje && <Alerta alerta={alerta} />
       }
 
-      <Footer/>
+      <Footer />
     </>
   );
 };
