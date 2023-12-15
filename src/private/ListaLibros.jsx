@@ -12,7 +12,7 @@ export const ListaLibros = () => {
   const { usuarioAuth, setUsuarioAuth } = useAuth();
   const navigate = useNavigate();
 
-//LISTA LOS LIBROS
+  //LISTA LOS LIBROS
   useEffect(() => {
     const obtenerLibros = async () => {
       const { data } = await clienteAxios('/libros')
@@ -23,29 +23,29 @@ export const ListaLibros = () => {
 
   console.log(usuarioAuth)
 
-  const cerrarSeccion = ()=>{
+  const cerrarSeccion = () => {
     localStorage.removeItem("token");
     navigate('../')
   }
 
-  const {rol} = usuarioAuth;
+  const { rol } = usuarioAuth;
   console.log(rol)
   return (
     <>
       <Header />
-   <div className="botonesVarios">
-    <div onClick={()=>navigate('../agregarlibro')} className='botonesVarios-boton'>
-        <Button titulo={"agregar un libro"} />
-      </div>
-      <div onClick={()=> navigate('../editusuario')} className='botonesVarios-boton'>
-        <Button titulo={"actualizar usuario"} />
-      </div>
-      <div onClick={cerrarSeccion} className='botonesVarios-boton'>
-        <Button titulo={"salir de la sesion"} />
+      <div className="botonesVarios">
+        <div onClick={() => navigate('../agregarlibro')} className='botonesVarios-boton'>
+          <Button titulo={"agregar un libro"} />
+        </div>
+        <div onClick={() => navigate('../editusuario')} className='botonesVarios-boton'>
+          <Button titulo={"actualizar usuario"} />
+        </div>
+        <div onClick={cerrarSeccion} className='botonesVarios-boton'>
+          <Button titulo={"salir de la sesion"} />
+        </div>
+
       </div>
 
-   </div>
-     
 
       <main className='cotenedor-libros'>
         {

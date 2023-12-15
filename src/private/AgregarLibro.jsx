@@ -48,20 +48,38 @@ export const AgregarLibro = () => {
 
   }
 
+  const cerrarSeccion = () => {
+    localStorage.removeItem("token");
+    navigate('../')
+  }
+
   const { mensaje } = alerta;
   return (
     <>
       <Header />
 
-      <div onClick={() => navigate('../')}>
-        <Button titulo={"volver al inicio"} />
+
+      <div className="botonesVarios">
+        <div onClick={() => navigate('../')}>
+          <Button titulo={"volver al inicio"} />
+        </div>
+        <div onClick={() => navigate('../agregarlibro')} className='botonesVarios-boton'>
+          <Button titulo={"agregar un libro"} />
+        </div>
+        <div onClick={() => navigate('../editusuario')} className='botonesVarios-boton'>
+          <Button titulo={"actualizar usuario"} />
+        </div>
+        <div onClick={cerrarSeccion} className='botonesVarios-boton'>
+          <Button titulo={"salir de la sesion"} />
+        </div>
+
       </div>
       <div className='login-container'>
 
         <div className="card">
           <div className="card2">
             <form className="form">
-              <p id="cursos-heading">AGREGA UN LIBRO</p>
+              <p id="heading">AGREGA UN LIBRO</p>
               <div className="field">
                 <svg viewBox="0 0 16 16" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg" className="input-icon">
                 </svg>
@@ -81,12 +99,12 @@ export const AgregarLibro = () => {
                   id="urlDescarga" placeholder="link de descarga" onChange={handleInputChange} value={formData.urlDescarga} />
               </div>
               <div className="field">
-              <svg viewBox="0 0 16 16" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg" className="input-icon">
-              </svg>
-              <input type="text" className="input-field"
-                id="urlFoto" placeholder="Agrege link de una foto si quiere" onChange={handleInputChange} value={formData.urlFoto} />
-            </div>
-             
+                <svg viewBox="0 0 16 16" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg" className="input-icon">
+                </svg>
+                <input type="text" className="input-field"
+                  id="urlFoto" placeholder="Agrege link de una foto si quiere" onChange={handleInputChange} value={formData.urlFoto} />
+              </div>
+
               <div className="btn">
                 <button className="button1" onClick={onSubmit}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agregar a la coleccion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
               </div>
