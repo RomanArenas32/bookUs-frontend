@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Footer, Header } from '../components';
 import './private.css';
 import clienteAxios from '../config/axios';
-import { Alerta, Busqueda, Button } from '../utils';
+import { Alerta, Avisos, Busqueda, Button } from '../utils';
 import { useAuth } from '../hooks';
 import { useNavigate } from 'react-router-dom';
 export const ListaLibros = () => {
@@ -33,8 +33,7 @@ export const ListaLibros = () => {
   const borrarLibro = async () => {
     console.log("borrando")
   }
-
-  const { rol } = usuarioAuth;
+  const { rol, nombre } = usuarioAuth;
 
 
   const { mensaje } = alerta;
@@ -60,7 +59,9 @@ export const ListaLibros = () => {
       <div className='input-busqueda'>
         <Busqueda titulo={"Buscar libro"} />
       </div>
-      
+      <div>
+        <Avisos mensaje={`Hola ${nombre} aca podes ver todo el material didáctico`} />
+      </div>
       <main className='cotenedor-libros'>
         {
           libros.map(el => (
