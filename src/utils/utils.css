@@ -293,20 +293,24 @@ button:hover .star-6 {
 .boton-error {
   background-color: #ff0000;
   color: #fff;
-  padding: 10px 20px;
+  padding: 20px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
+  font-weight: bold;
 }
 
 
 .boton-exito {
   background-color: #43c243;
   color: #fff;
-  padding: 10px 20px;
+  padding: 20px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
+  font-weight: bold;
 }
 
 

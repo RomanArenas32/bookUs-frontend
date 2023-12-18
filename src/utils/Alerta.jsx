@@ -1,4 +1,4 @@
-
+import './utils.css'
 export const Alerta = ({alerta}) => {
     const {mensaje, error} = alerta;
   return (
