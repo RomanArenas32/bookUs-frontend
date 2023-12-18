@@ -17,7 +17,6 @@ export const EditarUsuario = () => {
     const { correo, _id, rol } = usuarioAuth;
 
 
-    console.log(usuarioAuth)
 
     const [formData, setFormData] = useState({
         nombre: '',
@@ -75,7 +74,9 @@ export const EditarUsuario = () => {
                 <div onClick={() => navigate('../agregarlibro')} className='botonesVarios-boton'>
                     <Button titulo={"agregar un libro"} />
                 </div>
-               
+                <div onClick={() => navigate('../libros')} className='botonesVarios-boton'>
+                    <Button titulo={"volver a lista de libros"} />
+                </div>
                 <div onClick={cerrarSeccion} className='botonesVarios-boton'>
                     <Button titulo={"salir de la sesion"} />
                 </div>

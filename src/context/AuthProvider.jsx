@@ -25,6 +25,7 @@ useEffect(() => {
       setUsuarioAuth(data.usuario);
       
     } catch (error) {
+      console.log(error)
       console.log(error.response.data.msg);
     }
   };
