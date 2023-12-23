@@ -1,15 +1,12 @@
-/*Header*/
+/*HEADER COMIENZO*/
 .header {
   background-image: url(../assets/img/img3.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  /* Evita la repetición de la imagen */
   background-position: center center;
-  /* Centra la imagen horizontal y verticalmente */
   width: 100vw;
   height: 30rem;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-
 }
 
 h1 {
@@ -22,9 +19,9 @@ h1 {
   font-size: 4rem;
 }
 
-/*Header end*/
+/*HEADER FINAL*/
 
-/*Footer*/
+/*FOOTER COMIENZO*/
 .footer {
   padding: 10px 0;
   /* Espaciado interno del footer */
@@ -45,7 +42,7 @@ h1 {
   font-size: 10px;
 }
 
-/*Footer end*/
+/*FOOTER FINAL*/
 
 /*Presentacion comienzo*/
 .presentacion {
@@ -102,13 +99,3 @@ h1 {
 }
 
 /*Presentacion final*/
-
-/*comienzo navegacion*/
-.navegacion {
-  padding: 3rem;
-  width: 100%;
-}
-.iniciarSesion{
-  width: 200px;
-}
-/*final navegacion*/

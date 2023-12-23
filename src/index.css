@@ -1,15 +1,14 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    width: 100vw;
-    height: 100vh;
-    /* Add your background pattern here */
-    background-image: radial-gradient( #173d49 85%, #36a6f1 90%,#0d1725 20%);
-    background-size: 50px 50px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: white;
+  width: 100vw;
+  height: 100vh;
+  background-image: radial-gradient( #173d49 85%, #36a6f1 90%,#0d1725 20%);
+  background-size: 50px 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
 }

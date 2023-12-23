@@ -1,15 +1,14 @@
-import { useNavigate } from 'react-router-dom';
 import '../auth/auth.css';
 import './private.css';
-import { Footer, Header } from '../components';
 import { Alerta, Button } from '../utils';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import clienteAxios from '../config/axios';
 
 export const AgregarLibro = () => {
+
   const navigate = useNavigate();
   const [alerta, setAlerta] = useState({});
-
   const [formData, setFormData] = useState({
     titulo: '',
     sinopsis: '',
@@ -19,14 +18,14 @@ export const AgregarLibro = () => {
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
-    // Actualizar el estado con los nuevos valores
     setFormData({
       ...formData,
       [id]: value,
     });
   }
 
-  const onSubmit = async (e) => {
+
+  const AgregarLibro = async(e)=>{
     e.preventDefault();
     if ([formData.titulo, formData.sinopsis, formData.urlDescarga].includes("")) {
       setAlerta({ mensaje: 'No puede haber campos vacios', error: true });
@@ -34,6 +33,7 @@ export const AgregarLibro = () => {
     }
     try {
       const { data } = await clienteAxios.post(`/libros`, formData);
+    
       setAlerta({ mensaje: "Libro agregado correctamente", error: false })
 
     } catch (error) {
@@ -41,35 +41,29 @@ export const AgregarLibro = () => {
       setAlerta({ mensaje: error.response.data.errors[0].msg, error: true })
       return;
     }
-
     setTimeout(() => {
       navigate("../libros")
     }, 2000);
-
   }
 
   const cerrarSeccion = () => {
     localStorage.removeItem("token");
     navigate('../')
   }
-
-  const { mensaje } = alerta;
+  const { mensaje } = alerta
   return (
     <>
-      <Header />
-
-
       <div className="botonesVarios">
-        <div onClick={() => navigate('../')}>
+        <div className='botonesVarios-boton' onClick={() => navigate("../")}>
           <Button titulo={"volver al inicio"} />
         </div>
-        <div onClick={() => navigate('../libros')} className='botonesVarios-boton'>
+        <div className='botonesVarios-boton' onClick={() => navigate("../libros")}>
           <Button titulo={"Lista de libros"} />
         </div>
-        <div onClick={() => navigate('../editusuario')} className='botonesVarios-boton'>
+        <div className='botonesVarios-boton' onClick={() => navigate("../editusuario")}>
           <Button titulo={"actualizar usuario"} />
         </div>
-        <div onClick={cerrarSeccion} className='botonesVarios-boton'>
+        <div className='botonesVarios-boton' onClick={cerrarSeccion}>
           <Button titulo={"salir de la sesion"} />
         </div>
 
@@ -106,17 +100,14 @@ export const AgregarLibro = () => {
               </div>
 
               <div className="btn">
-                <button className="button1" onClick={onSubmit}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agregar a la coleccion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                <button className="button1" onClick={AgregarLibro}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Agregar a la coleccion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
               </div>
 
             </form>
           </div>
         </div>
       </div>
-      {
-        mensaje && <Alerta alerta={alerta} />
-      }
-      <Footer />
+      {mensaje && <Alerta alerta={alerta} />}
     </>
   )
 }

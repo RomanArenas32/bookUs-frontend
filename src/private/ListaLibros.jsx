@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
-import { Footer, Header } from '../components';
 import './private.css';
 import clienteAxios from '../config/axios';
 import { Alerta, Avisos, Button } from '../utils';
 import { useAuth } from '../hooks';
 import { useNavigate } from 'react-router-dom';
+
+
 export const ListaLibros = () => {
 
-
+  const navigate = useNavigate();
   const [libros, setLibros] = useState([]);
   const [alerta, setAlerta] = useState({});
+  const { usuarioAuth } = useAuth();
+  const { rol, nombre } = usuarioAuth;
 
   const [libroPorNombre, setLibroPorNombre] = useState("");
   const [listaLibrosFiltrados, setListaLibrosFiltrados] = useState([]);
-
-  const { usuarioAuth } = useAuth();
-  const navigate = useNavigate();
 
   //LISTA LOS LIBROS
   useEffect(() => {
@@ -26,35 +26,26 @@ export const ListaLibros = () => {
     obtenerLibros();
   }, [])
 
+  const borrarLibro = async (id) => {
+    const confirmar = confirm('Deseas eliminar este libro?')
+    if (confirmar) {
+      try {
+        const { data } = await clienteAxios.delete(`/libros/${id}`);
+        setAlerta({ mensaje: "Libro eliminado correctamente", error: false })
+      } catch (error) {
+        setAlerta({ mensaje: "Error al eliminar el libro", error: true })
+      }
+    }
+  }
 
   const cerrarSeccion = () => {
     localStorage.removeItem("token");
     navigate('../')
   }
-
-
-  const borrarLibro = async (id) => {
-    const confirmar = confirm('Deseas eliminar este libro?')
-
-    if (confirmar) {
-      try {
-        const { data } = await clienteAxios.delete(`/libros/${id}`);
-        setAlerta({ mensaje: "Libro eliminado correctamente", error: false })
-
-      } catch (error) {
-        setAlerta({ mensaje: "Error al eliminar el libro", error: true })
-      }
-    }
-
-    else {
-      console.log("ok")
-    }
-  }
-  const { rol, nombre } = usuarioAuth;
+  const { mensaje } = alerta;
 
   const buscarLibroPorNombre = async (e) => {
     e.preventDefault();
-
     try {
       const { data } = await clienteAxios.get(`libros/search?keyword=${libroPorNombre}`);
       setListaLibrosFiltrados(data)
@@ -63,11 +54,8 @@ export const ListaLibros = () => {
     }
   }
 
-  const { mensaje } = alerta;
-
   return (
     <>
-      <Header />
       <div className="botonesVarios">
         <div onClick={() => navigate('../agregarlibro')} className='botonesVarios-boton'>
           <Button titulo={"agregar un libro"} />
@@ -82,14 +70,12 @@ export const ListaLibros = () => {
           <Button titulo={"listar usuarios"} />
         </div>}
       </div>
-
       <div className='input-busqueda'>
-
         <input type="text" name="text" className="busqueda" placeholder="Buscar libro" required="" value={libroPorNombre} onChange={e => setLibroPorNombre(e.target.value)} />
         <button onClick={buscarLibroPorNombre}>buscar</button>
-
         <Avisos mensaje={`Hola ${nombre} aca podes ver todo el material didáctico`} />
       </div>
+
       {listaLibrosFiltrados.length !== 0 && (
         <>
           <Avisos mensaje={`El resultado es:`} />
@@ -109,6 +95,7 @@ export const ListaLibros = () => {
                 </button>
                 {(rol === "ADMIN_ROLE") && <button className='botonBorrar' onClick={() => borrarLibro(el._id)}>BORRAR</button>}
               </div>
+              
             ))}
           </div>
         </>
@@ -140,7 +127,6 @@ export const ListaLibros = () => {
       {
         mensaje && <Alerta alerta={alerta} />
       }
-      <Footer />
     </>
   )
 }

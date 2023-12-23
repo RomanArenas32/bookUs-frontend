@@ -1,3 +1,15 @@
+/*HOME INICIO*/
+
+.titulo-home{
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1.7rem;
+    text-decoration: underline;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 .presentacion-home{
     width: 100%;
     display: flex;
@@ -7,10 +19,4 @@
     padding: 1rem;
     margin: 1rem 0rem;
 }
-.titulo-home{
-    text-transform: uppercase;
-    text-align: center;
-    padding: 1.7rem;
-    text-decoration: underline;
-    font-size: 30px;
-}
+/*HOME FINAL*/

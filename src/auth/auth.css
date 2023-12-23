@@ -1,9 +1,10 @@
 /*COMIENZO LOGIN*/
-.login-container{
+.login-container {
     height: 75vh;
     display: grid;
     place-items: center;
 }
+
 .form {
     display: flex;
     flex-direction: column;
